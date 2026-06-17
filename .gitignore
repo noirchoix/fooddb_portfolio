@@ -1,0 +1,43 @@
+# Environment
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+apps/api/venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node / SvelteKit
+node_modules/
+apps/web/node_modules/
+.svelte-kit/
+apps/web/.svelte-kit/
+build/
+dist/
+apps/web/build/
+
+# FoodDB runtime artifacts hydrated from Hugging Face
+apps/api/data/
+hf_fooddb_dataset/
+*.duckdb
+*.parquet
+*.sqlite
+*.db
+
+# Logs and generated files
+*.log
+logs/
+outputs/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json

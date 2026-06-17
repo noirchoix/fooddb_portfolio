@@ -1,0 +1,33 @@
+services:
+  api:
+    image: python:3.12-slim
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - "8000:8000"
+    environment:
+      FOODDB_HF_REPO_ID: noirchoix/fooddb
+      FOODDB_HF_REPO_TYPE: dataset
+      FOODDB_AUTO_DOWNLOAD: "true"
+      FOODDB_CACHE_DIR: /app/apps/api/data
+      FOODDB_DUCKDB_PATH: /app/apps/api/data/food_chemistry/staging/fooddb.duckdb
+      FOODDB_CURATED_DIR: /app/apps/api/data/food_chemistry/curated/v1
+      FRONTEND_ORIGIN: http://localhost:5173
+    command: >
+      sh -c "pip install --no-cache-dir -r apps/api/requirements.txt &&
+             cd apps/api &&
+             uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+
+  web:
+    image: node:22-alpine
+    working_dir: /app/apps/web
+    volumes:
+      - ./:/app
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_BASE_URL: http://localhost:8000
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    depends_on:
+      - api
