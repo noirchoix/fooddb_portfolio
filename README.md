@@ -1,26 +1,26 @@
 # FoodDB Compound Explorer
 
-Portfolio-grade FoodDB chemistry explorer built with **FastAPI + SvelteKit**.
+A scientific analytical backend and comparison workbench over curated FoodDB-derived artifacts. It combines DuckDB/Parquet evidence queries with vectorized NumPy descriptor representations to support bidirectional food-compound exploration, chemical-profile comparison, and interpretable similarity retrieval.
 
-The runtime data is hosted on Hugging Face:
+## Engineering profile
 
-```text
-https://huggingface.co/datasets/noirchoix/fooddb
-```
+This repository demonstrates:
 
-The app hydrates the required DuckDB and curated Parquet artifacts from `noirchoix/fooddb` on backend startup, so the GitHub repository stays small and deployment-safe.
+- DuckDB analytical SQL with CTEs, joins, filters, and parameterized queries
+- Food-to-compound and compound-to-food evidence navigation
+- Links to flavor terms, enzymes, pathways, and health-effect evidence
+- Raw, standardized, and IDF-weighted descriptor vectors
+- Vectorized NumPy cosine similarity and full-matrix nearest-profile ranking
+- Interpretable descriptor deltas instead of opaque similarity-only output
+- Hugging Face artifact hydration decoupled from upstream data-build environment
 
-## Features
+## Reliability and scope
 
-- Search foods.
-- Resolve a food identity.
-- View compounds and concentration evidence for a food.
-- Search compounds such as quercetin, luteolin, and apigenin.
-- View foods containing a selected compound.
-- Inspect health-effect, flavor, enzyme, and pathway links for a compound.
-- View descriptor-vector summaries for a food.
-- Compare two foods chemically using descriptor vectors.
-- Find chemically similar foods.
+This serving repository consumes curated descriptor/data artifacts.
+
+## Related artifacts
+
+- **Hugging Face artifacts/data:** https://huggingface.co/datasets/noirchoix/fooddb
 
 ## Data Source
 
